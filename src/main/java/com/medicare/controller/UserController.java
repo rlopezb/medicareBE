@@ -13,13 +13,13 @@ import java.util.List;
 public class UserController {
   private final UserService usersService;
 
-  @PreAuthorize(value = "hasRole('ROLE_ADMIN')")
+  @PreAuthorize("hasRole('ADMIN')")
   @GetMapping
   public List<User> findAll() {
     return usersService.findAll();
   }
 
-  @PreAuthorize(value = "hasRole('ROLE_ADMIN')")
+  @PreAuthorize("hasRole('ADMIN')")
   @PostMapping
   public User save(@RequestBody User user) {
     return usersService.save(user);
