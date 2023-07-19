@@ -1,0 +1,15 @@
+com:
+  medicare:
+    auth:
+      secret: 4LrEqu$oX2S4o@oJ9_=L
+      expiration: 10
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/medicare
+    username: medicare
+    password: medicare
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
