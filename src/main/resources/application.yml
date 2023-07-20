@@ -3,6 +3,9 @@ com:
     auth:
       secret: 4LrEqu$oX2S4o@oJ9_=L
       expiration: 10
+server:
+  servlet:
+    contextPath: /medicare/api
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
