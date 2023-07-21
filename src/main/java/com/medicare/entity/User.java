@@ -1,14 +1,13 @@
 package com.medicare.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
 @Data
 public class User {
   @Id
+  @GeneratedValue
   private Long id;
   private String username;
   private String password;
