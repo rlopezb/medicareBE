@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
-@RequestMapping("/user")
+@RequestMapping("/medicare/api/user")
 public class UserController {
   private final UserService usersService;
 

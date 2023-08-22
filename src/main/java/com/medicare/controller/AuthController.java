@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
-@CrossOrigin
-@RequestMapping("/auth")
+@CrossOrigin(origins = "*")
+@RequestMapping("/medicare/api/auth")
 @RequiredArgsConstructor
 public class AuthController {
   private final AuthenticationManager authenticationManager;

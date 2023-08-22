@@ -30,7 +30,7 @@ public class SecurityConfig {
         .cors(AbstractHttpConfigurer::disable)
         .csrf(AbstractHttpConfigurer::disable)
         .authorizeHttpRequests(auth -> auth
-            .requestMatchers("/auth/**")
+            .requestMatchers("/medicare/api/auth/**")
             .permitAll()
             .anyRequest()
             .authenticated())
