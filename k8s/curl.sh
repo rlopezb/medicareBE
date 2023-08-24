@@ -1,0 +1,1 @@
+curl --cert ~/.minikube/profiles/minikube/client.crt --key ~/.minikube/profiles/minikube/client.key --cacert ~/.minikube/ca.crt https://192.168.49.2:8443/api/v1/$1

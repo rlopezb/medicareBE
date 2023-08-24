@@ -1,2 +1,2 @@
 minikube start
-for d in storage mysql tomcat nginx ingress ; do (cd "$d" && ./deploy.sh); done
+for d in security storage mysql tomcat nginx ingress ; do (cd "$d" && ./deploy.sh); done
