@@ -12,17 +12,17 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/medicare/api/user")
 public class UserController {
-  private final UserService usersService;
+  private final UserService userService;
 
   @PreAuthorize("hasRole('ADMIN')")
   @GetMapping
   public List<User> findAll() {
-    return usersService.findAll();
+    return userService.findAll();
   }
 
   @PreAuthorize("hasRole('ADMIN')")
   @PostMapping
   public User save(@RequestBody User user) {
-    return usersService.save(user);
+    return userService.save(user);
   }
 }
