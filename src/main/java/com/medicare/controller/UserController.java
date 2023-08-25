@@ -1,5 +1,6 @@
 package com.medicare.controller;
 import com.medicare.entity.User;
+import com.medicare.exception.UserException;
 import com.medicare.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -22,7 +23,7 @@ public class UserController {
 
   @PreAuthorize("hasRole('ADMIN')")
   @PostMapping
-  public User save(@RequestBody User user) {
-    return userService.save(user);
+  public User create(@RequestBody User user) throws UserException {
+    return userService.create(user);
   }
 }

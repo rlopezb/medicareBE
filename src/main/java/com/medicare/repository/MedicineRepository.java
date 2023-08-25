@@ -7,5 +7,5 @@ public interface MedicineRepository extends PagingAndSortingRepository<Medicine,
   Medicine findById(Long id);
   Medicine save(Medicine medicine);
   void deleteById(Long id);
-
+  boolean existsByName(String name);
 }

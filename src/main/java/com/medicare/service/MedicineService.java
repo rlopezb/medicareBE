@@ -1,6 +1,7 @@
 package com.medicare.service;
 
 import com.medicare.entity.Medicine;
+import com.medicare.exception.MedicineException;
 import com.medicare.repository.MedicineRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -16,13 +17,28 @@ public class MedicineService {
     return medicineRepository.findAll(pageable);
   }
 
-  public Medicine findById(Long id) { return medicineRepository.findById(id); }
-  public Medicine create(Medicine medicine) {
+  public Medicine findById(Long id) {
+    return medicineRepository.findById(id);
+  }
+
+  public Medicine create(Medicine medicine) throws MedicineException {
     medicine.setId(null);
+    if (medicineRepository.existsByName(medicine.getName())) {
+      throw new MedicineException("Medicine with name " + medicine.getName() + " already exists");
+    }
     return medicineRepository.save(medicine);
   }
-  public Medicine update(Medicine medicine) {
-    return medicineRepository.save(medicine);
+
+  public Medicine update(Medicine medicine) throws MedicineException {
+    Medicine dbMedicine = medicineRepository.findById(medicine.getId());
+    if (dbMedicine == null) {
+      throw new MedicineException("Medicine with id " + medicine.getId() + " does not exists");
+    }
+    if (medicine.getPrice() != null) dbMedicine.setPrice(medicine.getPrice());
+    if (medicine.getSeller() != null) dbMedicine.setSeller(medicine.getSeller());
+    if (medicine.getDescription() != null) dbMedicine.setDescription(medicine.getDescription());
+    if (medicine.getEnabled() != null) dbMedicine.setEnabled(medicine.getEnabled());
+    return medicineRepository.save(dbMedicine);
   }
 
   public void deleteById(Long id) {

@@ -25,4 +25,7 @@ public class Medicine {
   @NotNull
   @Column(nullable = false)
   private String description;
+  @NotNull
+  @Column(nullable = false)
+  private Boolean enabled;
 }
