@@ -18,12 +18,12 @@ public class Medicine {
   private String name;
   @NotNull
   @Column(nullable = false)
-  private Long price;
+  private Float price;
   @NotNull
   @Column(nullable = false)
   private String seller;
   @NotNull
-  @Column(nullable = false)
+  @Column(columnDefinition = "TEXT", nullable = false)
   private String description;
   @NotNull
   @Column(nullable = false)

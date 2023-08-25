@@ -5,3 +5,4 @@ kubectl apply -f minikube-ingress.yaml
 kubectl port-forward --address 0.0.0.0 service/nginx 8008:80 > /dev/null 2>&1 &
 kubectl port-forward --address 0.0.0.0 service/tomcat 8080:8080 > /dev/null 2>&1 &
 #kubectl port-forward --address 0.0.0.0 service/jenkins 8081:8081 > /dev/null 2>&1 &
+kubectl port-forward --address 0.0.0.0 service/mysql 3306:3306 > /dev/null 2>&1 &
