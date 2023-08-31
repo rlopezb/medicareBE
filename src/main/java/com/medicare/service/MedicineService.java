@@ -13,8 +13,39 @@ import org.springframework.stereotype.Service;
 public class MedicineService {
   private final MedicineRepository medicineRepository;
 
-  public Page<Medicine> findAll(Pageable pageable) {
+  public Page<Medicine> search(Pageable pageable) {
     return medicineRepository.findAll(pageable);
+  }
+
+  public Page<Medicine> search(Pageable pageable, String search) {
+    return medicineRepository.search(pageable, search);
+  }
+
+  public Page<Medicine> search(Pageable pageable, Float price) {
+    return medicineRepository.search(pageable, price);
+  }
+
+  public Page<Medicine> search(Pageable pageable, String search, Float price) {
+    return medicineRepository.search(pageable, search, price);
+  }
+  public Page<Medicine> search(Pageable pageable, Long seller) {
+    return medicineRepository.search(pageable, seller);
+  }
+
+  public Page<Medicine> search(Pageable pageable, Long seller, String search) {
+    return medicineRepository.search(pageable, seller, search);
+  }
+
+  public Page<Medicine> search(Pageable pageable, Long seller, Float price) {
+    return medicineRepository.search(pageable, seller, price);
+  }
+
+  public Page<Medicine> search(Pageable pageable, Long seller, String search, Float price) {
+    return medicineRepository.search(pageable, seller, search, price);
+  }
+
+  public Float max(){
+    return medicineRepository.max();
   }
 
   public Medicine findById(Long id) {
@@ -44,5 +75,4 @@ public class MedicineService {
   public void deleteById(Long id) {
     medicineRepository.deleteById(id);
   }
-
 }

@@ -1,9 +1,6 @@
 package com.medicare.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
@@ -19,9 +16,9 @@ public class Medicine {
   @NotNull
   @Column(nullable = false)
   private Float price;
-  @NotNull
-  @Column(nullable = false)
-  private String seller;
+  @ManyToOne
+  @JoinColumn(name = "seller_id", nullable = false)
+  private Seller seller;
   @NotNull
   @Column(columnDefinition = "TEXT", nullable = false)
   private String description;
