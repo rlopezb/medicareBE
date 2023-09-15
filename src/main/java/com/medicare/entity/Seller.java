@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 public class Seller {
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Long id;
   @NotNull
   @Column(nullable = false, unique = true)

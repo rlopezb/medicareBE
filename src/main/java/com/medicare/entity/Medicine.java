@@ -1,14 +1,18 @@
 package com.medicare.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
 public class Medicine {
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Long id;
   @NotNull
   @Column(nullable = false, unique = true)
@@ -25,4 +29,10 @@ public class Medicine {
   @NotNull
   @Column(nullable = false)
   private Boolean enabled;
+  @NotNull
+  @Column(nullable = false)
+  private Integer stock;
+  @OneToMany(mappedBy = "medicine",fetch = FetchType.LAZY)
+  @JsonIgnore
+  private List<PurchaseMedicine> purchaseMedicines = new ArrayList<>();
 }

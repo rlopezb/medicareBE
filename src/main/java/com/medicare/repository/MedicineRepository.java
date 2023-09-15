@@ -30,4 +30,5 @@ public interface MedicineRepository extends PagingAndSortingRepository<Medicine,
   Page<Medicine> search(Pageable pageable, Long seller, String search, Float price);
   @Query("select max(m.price) from Medicine m")
   Float max();
+  boolean existsById(Long id);
 }

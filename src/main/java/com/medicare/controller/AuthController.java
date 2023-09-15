@@ -1,7 +1,8 @@
 package com.medicare.controller;
 
 import com.medicare.entity.User;
-import com.medicare.exception.UserException;
+import com.medicare.exception.UserDefinitionException;
+import com.medicare.exception.UserExistsException;
 import com.medicare.security.JwtUtils;
 import com.medicare.security.MedicareUserDetails;
 import com.medicare.security.MedicareUserDetailsService;
@@ -33,7 +34,7 @@ public class AuthController {
   }
 
   @PostMapping("/register")
-  public User register(@RequestBody User user) throws UserException {
+  public User register(@RequestBody User user) throws UserExistsException, UserDefinitionException {
     return userService.register(user);
   }
 }

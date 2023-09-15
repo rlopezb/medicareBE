@@ -1,7 +1,8 @@
 package com.medicare.controller;
 
 import com.medicare.entity.Medicine;
-import com.medicare.exception.MedicineException;
+import com.medicare.exception.MedicineExistsException;
+import com.medicare.exception.MedicineNotExistsException;
 import com.medicare.service.MedicineService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -58,20 +59,19 @@ public class MedicineController {
 
   @PreAuthorize("hasRole('ADMIN')")
   @PostMapping
-  public Medicine create(@RequestBody Medicine medicine) throws MedicineException {
+  public Medicine create(@RequestBody Medicine medicine) throws MedicineExistsException {
     return medicineService.create(medicine);
   }
 
   @PreAuthorize("hasRole('ADMIN')")
   @PutMapping
-  public Medicine update(@RequestBody Medicine medicine) throws MedicineException {
+  public Medicine update(@RequestBody Medicine medicine) throws MedicineNotExistsException {
     return medicineService.update(medicine);
   }
 
   @PreAuthorize("hasRole('ADMIN')")
   @DeleteMapping("{id}")
-  public void delete(@PathVariable Long id) {
+  public void delete(@PathVariable Long id) throws MedicineExistsException {
     medicineService.deleteById(id);
   }
-
 }
