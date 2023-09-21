@@ -47,6 +47,8 @@ public class PurchaseService {
     Medicine medicine = medicineRepository.findById(medicineId);
     if (medicine == null)
       throw new MedicineNotExistsException("The medicine with id " + medicineId + " does not exists");
+    if (medicine.getStock() == 0)
+      throw new MedicineNotExistsException("The medicine with id " + medicineId + " is out of stock");
 
     if (purchase.getPurchaseMedicines() == null) {
       purchase.setPurchaseMedicines(new ArrayList<>());
@@ -98,7 +100,7 @@ public class PurchaseService {
     } else {
       throw new MedicineNotExistsException("There is no purchased medicine with id " + purchaseMedicineId + " in the purchase number " + purchase.getId());
     }
-    return  purchaseRepository.save(purchase);
+    return purchaseRepository.save(purchase);
   }
 
   public Purchase pay(Long purchaseId, User user) throws PurchaseAccessDeniedException {

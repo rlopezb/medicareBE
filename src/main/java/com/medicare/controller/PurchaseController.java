@@ -17,8 +17,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Objects;
-
 @RestController
 @CrossOrigin
 @RequestMapping("/medicare/api/purchase")
@@ -39,7 +37,7 @@ public class PurchaseController {
 
   @PreAuthorize("hasAnyRole('ADMIN','USER')")
   @GetMapping
-  public Page<Purchase> search(@PageableDefault(size = 10) @SortDefault(sort = "id", direction = Sort.Direction.DESC) final Pageable pageable) {
+  public Page<Purchase> search(@PageableDefault @SortDefault(sort = "id", direction = Sort.Direction.DESC) final Pageable pageable) {
     return purchaseService.search(pageable, getUser());
   }
 
@@ -67,7 +65,7 @@ public class PurchaseController {
 
   @PreAuthorize("hasAnyRole('ADMIN','USER')")
   @PutMapping("{purchaseId}/pay")
-  public Purchase pay(@PathVariable Long purchaseId) throws PurchaseAccessDeniedException, MedicineNotExistsException {
+  public Purchase pay(@PathVariable Long purchaseId) throws PurchaseAccessDeniedException {
     User user = getUser();
     return purchaseService.pay(purchaseId, user);
   }
